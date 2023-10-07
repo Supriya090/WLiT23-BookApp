@@ -1,6 +1,4 @@
-const { Router } = require('express');
 var express = require('express');
-var books = require('../resources/books');
 const Book = require('../models/book')
 var router = express.Router();
 
@@ -15,14 +13,16 @@ router.post('/save', async function (req, res) {
   res.redirect('/');
 })
 
-router.get('/remove/:_id', function (req, res) {
-  books.splice(req.params._id, 1);
-  res.redirect('/');
+router.get('/remove/:_id', async function (req, res) {
+  console.log(req.params._id);
+  await Book.findOneAndRemove({ _id: req.params._id })
+  const books = await Book.find()
+  res.render('index', { title: 'Book App', bookList: books, redirectUrl: '/' });
 })
 
-router.get('/edit/:_id', function (req, res) {
+router.get('/edit/:_id', async function (req, res) {
   console.log(req.params._id);
-  const book = books.find((book) => book._id === req.params._id);
+  const book = await Book.findOne({ _id: req.params._id });
   res.render('editBooks', {
     title: "Edit Book",
     book
@@ -30,10 +30,10 @@ router.get('/edit/:_id', function (req, res) {
 })
 
 // Ask fellows to do this
-router.post('/edit/:_id', function (req, res) {
-  let currIndex = books.findIndex(book => book._id === req.params._id);
-  books.splice(currIndex, 1, { ...req.body, _id: req.params._id });
+router.post('/edit/:_id', async function (req, res) {
+  await Book.findOneAndUpdate({ _id: req.params._id }, { ...req.body })
   res.redirect('/');
 })
+
 
 module.exports = router;
