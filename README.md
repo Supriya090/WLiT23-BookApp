@@ -40,12 +40,16 @@
 
 ### Phase 3
 
+#### Using Slide
+
 - What is a database
 - What is MongoDB
 - Dive into terminologies and concepts related to MongoDB database
 - Why use MongoDB as database with NodeJs application
   - Explain the alternatives
   - Show differences with relational database
+
+#### Live Coding
 - Introduce and Familiarize with MongoDB Shell (mongosh)
 - Implement CRUD functionality through MongoDB Shell for Book App
 - Introduce to npm packages 'mongodb' and 'mongoose'
