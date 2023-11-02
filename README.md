@@ -56,3 +56,10 @@
 - Explain what schema is
   - Establish 'mongoose' connection and implement book schema in Book App
 - Implement CRUD functionality in Book App using 'mongoose' in the same order
+
+#### Extra
+- Explore MongoDB Compass + MongoDB Atlas and show how to make connections to both local and cloud databases through it. 
+
+#### Assignment
+- Create a Books Database in MongoDB Atlas and connect it through the Book App (Migrate the Books Database from Device to Cloud / Use Cloud database instead of Local database in Code).
+     
